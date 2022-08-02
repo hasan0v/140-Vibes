@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% for track in tracks %}
+<div class="track_container" style="color:#ffffff">
+    <div class="card">
+        <a href="{% url 'track' track.pk %}">
+            <div class="row">
+                <div class="col-2 col-x-2 col-sm-2 col-lg-1">
+                    {% if track.cover %}
+                    <img class="rounded-circle cover_img" src="{{ track.cover.url }}" >
+                    {% else %}
+                    <img class="rounded-circle cover_img" src="{% static 'images/disc.png' %}" ><br/>
+                    {% endif %}
+                </div>
+                <div class="col-8 col-sm-10 col-lg-11">
+                    <div class="card-body trackarea">
+                        <h5 class="card-title">{{track.name}}</h5>
+                        <h6 class="authorname">{{track.author}}</h6>
+                        <audio controls controller id="player" src="{{track.demo.url}}">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endfor %}
+{% endblock%}
