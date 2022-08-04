@@ -37,7 +37,7 @@
                             <h6 class="mb-0">Reper :</h6>
                         </div>
                         <div class="col-8">
-                            {{track.author}} 
+                            <a href="{% url 'profile' track.author %}">{{track.author}} </a>
                             {% if track.feat %}
                                 ( feat {{track.feat}} )
                             {% endif %}
@@ -164,28 +164,53 @@
                 </div>
             </div>
             {% endif %}
-            {% if track.amazon_buy_link or track.itunes_buy_link%}
+            {% if track.amazon_buy_link or track.itunes_buy_link or track.youtube_link%}
             <div class="col-md-3">
-                <div class="card cardtrack listenherecard mb-3">
-                    <div class="card-body listenherecard-body ">
-                        <div class="row">
-                            <div class="col-12">
-                                <h6 class="mb-0">Buradan əldə et :</h6>
+                <div class="row">
+                    {% if track.amazon_buy_link or track.itunes_buy_link%}
+                    <div class="col-12">
+                        <div class="card cardtrack listenherecard mb-3">
+                            <div class="card-body listenherecard-body ">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="mb-0">Buradan əldə et :</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {% if track.amazon_buy_link %}
+                                    <div class="col-6 mt-2 picondiv">
+                                        <h6 class="mb-0 picon buy"><a href="{{track.amazon_buy_link}}" target="_blank"><i class="fa-brands fa-amazon"></i></a></h6>
+                                    </div>
+                                    {% endif %}
+                                    {% if track.itunes_buy_link %}
+                                    <div class="col-6 mt-2 picondiv">
+                                        <h6 class="mb-0 picon buy"><a href="{{track.itunes_buy_link}}" target="_blank"><i class="fa-brands fa-itunes"></i></a></h6>
+                                    </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            {% if track.amazon_buy_link %}
-                            <div class="col-6 mt-2 picondiv">
-                                <h6 class="mb-0 picon buy"><a href="{{track.amazon_buy_link}}" target="_blank"><i class="fa-brands fa-amazon"></i></a></h6>
-                            </div>
-                            {% endif %}
-                            {% if track.itunes_buy_link %}
-                            <div class="col-6 mt-2 picondiv">
-                                <h6 class="mb-0 picon buy"><a href="{{track.itunes_buy_link}}" target="_blank"><i class="fa-brands fa-itunes"></i></a></h6>
-                            </div>
-                            {% endif %}
                         </div>
                     </div>
+                    {% endif %}
+                    {% if track.youtube_link %}
+                    <div class="col-12">
+                        <div class="card statbox mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i style="height: 30;" class="fa-brands fa-youtube"></i>
+                                    </div>
+                                    <div class="col-12">
+                                         {{views}} <i class="fa-solid fa-eye"></i>
+                                    </div>
+                                    <div class="col-12">
+                                         {{likes}} <i class="fa-solid fa-heart"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         {% else %}

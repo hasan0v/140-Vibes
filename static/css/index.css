@@ -1,8 +1,107 @@
 body{
     background-color: #010206;
     margin:0px;
-	padding:0px;
-	font-family:sans-serif;
+    padding:0px;
+    font-family:sans-serif;
+  }
+
+  /* CURSOR */
+.homecontainer{
+  cursor:none;
+}
+.homecontainer .home a{
+  cursor:none;
+}
+.cursor {
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+/* --------------- */
+
+
+.muzieknootjes {
+  color: white;
+  display: block;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  width: 80%;
+  height: 100%;
+  min-width: 300px;
+  border: 0px solid #000;
+  z-index: -1;
+}
+
+.noot-1,
+.noot-2,
+.noot-3,
+.noot-4,
+.noot-5{
+  position: absolute;
+  animation: notes 2s infinite linear;
+  font-size: 35px;
+  opacity: 0;
+}
+
+.noot-1 {
+  top: 60px;
+  left: 0;
+  animation-delay: 0.5s;
+}
+
+.noot-2 {
+  top: 30px;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.noot-3 {
+  top: 90px;
+  left: 60%;
+  animation-delay: 1.5s;
+}
+
+.noot-4 {
+  top: 70px;
+  left: 90%;
+  animation-delay: 2s;
+}
+.noot-5 {
+  top: 50px;
+  left: 75%;
+  animation-delay: 3s;
+}
+@keyframes notes {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) translate(50%, -50%);
+  }
+  80% {
+    opacity: 0;
+    transform: scale(1.5) translate(100%, -100%);
+  }
+  100% {
+    transform: scale(1.5) translate(100%, -100%);
+    opacity: 0;
+  }
+}
+/* ------------------------------- */
+
+
+h6 {
+  font-family: auto;
+  font-size: inherit;
 }
 #bgVideo {
     -webkit-filter: blur(6px);
@@ -256,7 +355,7 @@ audio{
   border-radius: 3px;
   width: max-content;
   font-size: 1.5rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin: 1rem;
   display: flex;
   justify-content: center;
@@ -270,8 +369,11 @@ audio{
   height: auto;
   text-align: center;
 }
-.listenherecard-body{
-  left: 0;
+
+.followherecard{
+  background-color: #0181fbe8;
+  height: auto;
+  text-align: center;
 }
 .lyricscard{
   height: auto;
@@ -309,4 +411,27 @@ a {
 .buy a svg:hover{
   color: #5d01bc;
   background:linear-gradient(to right top, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+}
+.profile_name{
+  text-align:center;
+}
+.prof_tracks{
+  height: auto;
+}
+.prof_cover_img{
+  position: relative;
+  width: 70;
+  height: 70;
+  top: 11px;
+  object-fit: cover;
+  left: 30px;
+}
+.statbox{
+  background-color: #ff1a1ac4;
+  height: auto;
+  text-align: center;
+  color: #ffffff;
+}
+.statbox:hover{
+  box-shadow:none;
 }

@@ -1,24 +1,35 @@
+<div  class="home>
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
 <link rel="icon" type="image/icon" href="static/logo.png" />
+<script>
+    $(document).ready(function(){
+        $("#mainNav").css("cursor","none");
+        $("#mainNav a").css("cursor","none");
+    });
+</script>
 
-<video id="bgVideo" preload="true" autoplay loop muted src="{% static '/video/bgvid.mp4' %}"> </video>
+<div class="cursor"></div>
 
-<div  class="home col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <h3 id="resizing-h3">
-        <span id="slogan_area">
-                <div class="stage">
-                    <div class="cubespinner">
-                        <div class="face1">140</div>
-                        <div class="face2">Vibes</div>
-                        <div class="face3">140</div>
-                        <div class="face4">Vibes</div>
+<div class="homecontainer">
+    <video id="bgVideo" preload="true" autoplay loop muted src="{% static '/video/bgvid.mp4' %}"> </video>
+    <div  class="home col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 id="resizing-h3">
+            <span id="slogan_area">
+                    <div class="stage">
+                        <div class="cubespinner">
+                            <div class="face1">140</div>
+                            <div class="face2">Vibes</div>
+                            <div class="face3">140</div>
+                            <div class="face4">Vibes</div>
+                        </div>
                     </div>
-                </div>
-                <div class="slogan">Record label based in Baku, Azerbaijan</div>
-        </span>
-    </h3>
-</div>
+                    <div class="slogan">Record label based in Baku, Azerbaijan</div>
+            </span>
+        </h3>
+    </div>
 
-{% endblock%}
+    {% endblock%}
+    </div>
+</div>

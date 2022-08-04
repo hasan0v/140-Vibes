@@ -45,6 +45,7 @@ class Profile(models.Model):
     deezer_profile=models.CharField(max_length=255, null=True, blank=True)
     yandex_music_profile=models.CharField(max_length=255, null=True, blank=True)
     youtube_profile=models.CharField(max_length=255, null=True, blank=True)
+    tidal_profile=models.CharField(max_length=255, null=True, blank=True)
     soundcloud_profile=models.CharField(max_length=255, null=True, blank=True)
     instagram_profile=models.CharField(max_length=255, null=True, blank=True)
     twitter_profile=models.CharField(max_length=255, null=True, blank=True)

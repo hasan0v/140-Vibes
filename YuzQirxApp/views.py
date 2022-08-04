@@ -4,9 +4,10 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from .models import Track, Album, Profile
 from django.db import connection
-from .tools import dictfetchall
+from .tools import dictfetchall, get_video_stats, standardizer
 from django.views.decorators.csrf import csrf_exempt
-
+import requests
+from bs4 import BeautifulSoup
 # Create your views here.
 # class HomeView(ListView):
     # model=Track
@@ -43,5 +44,36 @@ class TrackDetail(DetailView):
     def get_context_data(self,*args, **kwargs):
         track =  Track.objects.get(id=self.kwargs['pk'])
         context = super(TrackDetail, self).get_context_data(*args, **kwargs)
+        video = []
+        video.append(track.youtube_link.replace('https://youtube.com/watch?v=',''))
+        views, likes = get_video_stats(video)
+        views = standardizer(views)
+        likes = standardizer(likes)
         context["track"] = track
+        context["views"] = views
+        context["likes"] = likes
         return context
+
+# class ProfileDetail(DetailView, name):
+#     model=Profile
+#     template_name='profile.html'
+    
+#     def get_context_data(self,*args, **kwargs):
+#         profile =  Profile.objects.get(name=self.kwargs['name'])
+#         context = super(ProfileDetail, self).get_context_data(*args, **kwargs)
+#         context["profile"] = profile
+#         return context
+def ProfileDetail(request, name):
+    profile =  Profile.objects.filter(name=name)
+    tracks =  Track.objects.filter(author=name)
+    track_list = tracks.all()
+    videos = []
+    for track in track_list:
+        videos.append(track.youtube_link.replace('https://youtube.com/watch?v=',''))
+    print(videos)
+    
+    print(get_video_stats(videos))
+    views, likes = get_video_stats(videos)
+    views = standardizer(views)
+    likes = standardizer(likes)
+    return render(request, 'profile.html', {'profile':profile, 'likes':likes, 'views':views, 'tracks':track_list})
