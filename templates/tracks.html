@@ -1,29 +1,148 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
-{% for track in tracks %}
-<div class="track_container" style="color:#ffffff">
-    <div class="card">
-        <a href="{% url 'track' track.pk %}">
-            <div class="row">
-                <div class="col-2 col-x-2 col-sm-2 col-lg-1">
-                    {% if track.cover %}
-                    <img class="rounded-circle cover_img" src="{{ track.cover.url }}" >
-                    {% else %}
-                    <img class="rounded-circle cover_img" src="{% static 'images/disc.png' %}" ><br/>
-                    {% endif %}
+<script type="text/javascript">
+    var Winsize = function(){
+        var win = $(window);
+        if (win.width() <= 767 && win.width() >= 575) {
+            $('.cover_img').css('width', '45px');
+            $('.cover_img').css('height', '45px');
+            $('.cover_img').css('top', '10px');
+            $('.cover_img').css('left', '12px');
+            $('.authorname').css('font-size', '10px');
+            $('.card-title').css('margin-bottom', '0');
+            $('.card-title').css('font-size', '0.8rem');
+            $('.trackbodyarealist').css('left', '1rem');
+            $('.trackbodyarealist').css('height', '4rem');
+            $('.trackbodyarealist').css('top', '-0.6rem');
+            $('.listplayer').css('height', '1.1rem');
+            $('.listplayer').css('width', '95%');
+        }
+        else if (win.width() <= 575) {
+            $('.cover_img').css('width', '45px');
+            $('.cover_img').css('height', '45px');
+            $('.cover_img').css('top', '10px');
+            $('.cover_img').css('left', '12px');
+            $('.authorname').css('font-size', '10px');
+            $('.card-title').css('margin-bottom', '0');
+            $('.card-title').css('font-size', '0.8rem');
+            $('.trackbodyarealist').css('left', '1rem');
+            $('.trackbodyarealist').css('height', '4rem');
+            $('.trackbodyarealist').css('top', '-0.6rem');
+            $('.listplayer').css('height', '1.1rem');
+            $('.listplayer').css('width', '135%');
+        }
+        else if (win.width() >= 575) {
+            $('.cover_img').css('width', '70');
+            $('.cover_img').css('height', '70');
+            $('.cover_img').css('top', '25');
+            $('.cover_img').css('left', '30px');
+            $('.authorname').css('font-size', '12px');
+            $('.card-title').css('margin-bottom', '0.5');
+            $('.card-title').css('font-size', '1rem');
+            $('.trackbodyarealist').css('left', '3rem');
+            $('.trackbodyarealist').css('height', 'auto');
+            $('.trackbodyarealist').css('top', '0rem');
+            $('.listplayer').css('height', '2rem');
+            $('.listplayer').css('width', '90%');
+        }
+        }
+
+    
+        $(window).resize(Winsize);  
+        $(document).ready(Winsize); 
+    $(document).ready(function(){
+        $('.gridbutton').click(function(){
+            $('.gridcontainer').css('display', 'flex');
+            $('.gridbutton').css('display', 'none');
+            $('.listcontainer').css('display', 'none');
+            $('.listbutton').css('display', 'flex');
+        });
+        $('.listbutton').click(function(){
+            $('.listcontainer').css('display', 'flex');
+            $('.listbutton').css('display', 'none');
+            $('.gridcontainer').css('display', 'none');
+            $('.gridbutton').css('display', 'flex');
+        });
+ 
+    });
+    
+</script>
+<div class="row gutters-sm track_container">
+    <div class="col-8 col-md-3" style="color:#ffffff">
+        <div class="buttonsbar_card">
+            <div class="row gutters-sm buttonsbar_container">
+                <div class="col-9">
+                   BÜTÜN TREKLƏR
                 </div>
-                <div class="col-8 col-sm-10 col-lg-11">
-                    <div class="card-body trackarea">
-                        <h5 class="card-title">{{track.name}}</h5>
-                        <h6 class="authorname">{{track.author}}</h6>
-                        <audio controls controller id="player" src="{{track.demo.url}}">
-                        </audio>
+                <div class="col-2">
+                    <div class="row">
+                        <a type="button" class="gridbutton"><i class="fa-solid fa-border-all"></i></a>
+                        <a type="button" class="listbutton"><i class="fa-solid fa-list-ul"></i></a>
                     </div>
                 </div>
+                <div class="col-1">
+                </div>
+            </div> 
+            
+        </div>
+    </div>
+    <div class="col-8 col-md-9" style="color:#ffffff">
+        <div class="row gutters-sm listcontainer">
+        {% for track in tracks %}
+            <div class="card listview">
+                <a href="{% url 'track' track.pk %}">
+                    <div class="row">
+                        <div class="col-2 col-x-2 col-sm-2 col-lg-1">
+                            {% if track.cover %}
+                            <img class="rounded-circle cover_img" src="{{ track.cover.url }}" >
+                            {% else %}
+                            <img class="rounded-circle cover_img" src="{% static 'images/disc.png' %}" ><br/>
+                            {% endif %}
+                        </div>
+                        <div class="col-8 col-sm-10 col-lg-11">
+                            <div class="card-body trackbodyarealist">
+                                <h5 class="card-title">{{track.name}}</h5>
+                                <h6 class="authorname">{{track.author}}</h6>
+                                <audio controls controller class="listplayer" src="{{track.demo.url}}">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
+            {% endfor %}
+        </div>
+
+        <div class="row gutters-sm gridcontainer">
+            {% for track in tracks %}
+            <div class="col-md-4">
+                <div class="card gridview" style="background-image: url({{ track.cover.url }}); background-size: contain; background-blend-mode: color; background-repeat: round;">
+                    <a href="{% url 'track' track.pk %}">
+                        <div class="row">
+                            <div class="col-12 gridcover">
+                                {% if track.cover %}
+                                <img class="gridcover_img" src="{{ track.cover.url }}" >
+                                {% else %}
+                                <img class="gridcover_img" src="{% static 'images/disc.png' %}" ><br/>
+                                {% endif %}
+                            </div>
+                            <div class="col-12 gridbody">
+                                <div class="card-body">
+                                    <br/>
+                                    <h5 class="card-title">{{track.name}}</h5>
+                                    <h6 class="authorname">{{track.author}}</h6>
+                                    <audio controls controller class="gridplayer" src="{{track.demo.url}}">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
-{% endfor %}
+
 {% endblock%}

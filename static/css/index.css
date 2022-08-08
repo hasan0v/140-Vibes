@@ -30,10 +30,11 @@ body{
   color: white;
   display: block;
   margin: auto;
-  position: fixed;
-  top: 0;
-  width: 80%;
-  height: 100%;
+  position: absolute;
+  top: -23px;
+  left: 10%;
+  width: 50%;
+  height: 10%;
   min-width: 300px;
   border: 0px solid #000;
   z-index: -1;
@@ -52,7 +53,7 @@ body{
 
 .noot-1 {
   top: 60px;
-  left: 0;
+  left: 50px;
   animation-delay: 0.5s;
 }
 
@@ -118,8 +119,8 @@ a:hover,a:active{
     width: 95%;
     z-index: 1000;
     position: absolute;
-    top: 20%;
-    left: 5%;
+    /* top: 20%;
+    left: 5%; */
 }
 .home:before{
 	content: ' ';
@@ -131,12 +132,13 @@ a:hover,a:active{
     background-color: rgba(0,0,0,0.9);
 }
 .home h3{
-	position:absolute;
-	font-size:74px;
-	text-align: left;
-    color:#ffffff;
-  	/* margin-left:15%; */
-	font-weight:700;
+  position: absolute;
+  font-size: 74px;
+  text-align: left;
+  color: #ffffff;
+  left: 11%;
+  top: 24%;
+  font-weight: 700;
 }
 
 .stage{
@@ -284,9 +286,6 @@ a:hover,a:active{
 }
 .card{
   background-color: #282828;
-  width: 94%;
-  left: 3%;
-  height: 120px;
   border-radius: 21px;
   font-family: "Helvetica Neue",Helvetica,Arial;
   margin-top: 1rem;
@@ -297,10 +296,16 @@ a:hover,a:active{
 .card-title{
   color: #ffffff;
   font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: 1;
 }
 .track_container{
 	position: relative;
-    top: 8rem;
+  width: 99%;
+  top: 8rem;
+  justify-content: center;
 }
 .cover_img {
   position: relative;
@@ -323,7 +328,11 @@ a:hover,a:active{
   color: #ffffffab;
   font-size: 12px;
 }
-audio{
+.listplayer{
+  width: 90%;
+  height: 2rem;
+}
+.gridplayer{
   width: 90%;
   height: 2rem;
 }
@@ -340,7 +349,7 @@ audio{
 .trackcontainer {
   position: relative;
   top: 8rem;
-  max-width: 99%;
+  max-width: 98%;
 }
 .cardtrack{
   color: #ffffff;
@@ -355,7 +364,6 @@ audio{
   border-radius: 3px;
   width: max-content;
   font-size: 1.5rem;
-  /* cursor: pointer; */
   margin: 1rem;
   display: flex;
   justify-content: center;
@@ -402,8 +410,8 @@ audio{
 a {
   color: inherit;
 }
-.trackarea{
-  left: 2rem;
+.trackbodyarealist{
+  left: 3rem;
 }
 .buy a svg{
   height: 3rem;
@@ -434,4 +442,90 @@ a {
 }
 .statbox:hover{
   box-shadow:none;
+}
+.buttonsbar_container{
+  text-align: center;
+  font-size: 1rem;
+}
+
+.buttonsbar_card{
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+}
+.buttonsbar_card:hover{
+  box-shadow: none;
+}
+.listbutton{
+  color: #ffffff;
+  padding: 0.1rem;
+  width: 2rem;
+}
+.listbutton:hover{
+  color: #ffffffb3;
+}
+.gridbutton{
+  padding: 0.1rem;
+  color: #ffffff;
+  width: 2rem;
+}
+.gridbutton:hover{
+  color: #ffffffb3;
+}
+.gridplayer{
+  width: 100%;
+  height: 2rem;
+}
+.gridview{
+  width: 100%;
+  height: auto;
+}
+.gridcover{
+  display: flex;
+  justify-content: center;
+}
+.gridcover img{
+  position: relative;
+  width: 200;
+  height: 200;
+  top: 25;
+  object-fit: cover;
+}
+.listbutton{
+  display: none;
+}
+.gridcontainer{
+  display: none;
+}
+.listview {
+  width: 95%;
+}
+
+.navtoggler {
+  position: relative;
+  left: 0rem;
+}
+nav#mainNav {
+  cursor: none;
+}
+.proftrackcontainer {
+  position: relative;
+}
+.listviewprofile{
+  width: 94%;
+  left: .6rem;
+}
+.profcontainer{
+  position: relative;
+  top: 8rem;
+  max-width: 94%;
+  left: .6rem;
+}
+footer {
+  z-index: 1000;
+  background-color: #000000;
+  position: relative;
+  top: 100%;
+  border-top: 1px solid #ffffff;
+  cursor: none;
 }

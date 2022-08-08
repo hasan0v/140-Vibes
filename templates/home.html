@@ -1,20 +1,31 @@
-<div  class="home>
+<div class="cursor"></div>
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
+<div  class="home">
 <link rel="icon" type="image/icon" href="static/logo.png" />
-<script>
-    $(document).ready(function(){
-        $("#mainNav").css("cursor","none");
-        $("#mainNav a").css("cursor","none");
-    });
+<script type="text/javascript">
+        $(document).ready(function(){
+            const cursor = document.querySelector('.cursor');
+            document.addEventListener('mousemove', e => {
+                cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+            })
+
+            document.addEventListener('click', () => {
+                cursor.classList.add("expand");
+
+                setTimeout(() => {
+                    cursor.classList.remove("expand");
+                }, 500)
+            })
+
+        });
 </script>
 
-<div class="cursor"></div>
 
 <div class="homecontainer">
     <video id="bgVideo" preload="true" autoplay loop muted src="{% static '/video/bgvid.mp4' %}"> </video>
-    <div  class="home col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h3 id="resizing-h3">
             <span id="slogan_area">
                     <div class="stage">
@@ -30,6 +41,6 @@
         </h3>
     </div>
 
-    {% endblock%}
-    </div>
 </div>
+</div>
+{% endblock%}
