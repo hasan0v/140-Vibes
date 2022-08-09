@@ -23,20 +23,10 @@ def get_video_stats(video_ids):
             part='statistics',
             id=video_id)
         response = request.execute()
-        # print("response*********************************************************")
-        # print(response)
         items = response.get('items')[0]
-        # print("items*********************************************************")
-        # print(items)
         statistics = items.get('statistics')
-        # print("statistics*********************************************************")
-        # print(statistics)
-        
         views += int(statistics.get('viewCount'))
         likes += int(statistics.get('likeCount'))
-        # views = ''
-        # likes = ''
-
 
     return views, likes
 

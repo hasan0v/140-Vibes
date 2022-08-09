@@ -31,10 +31,11 @@ class Tracks(ListView):
     model=Track
     template_name='tracks.html'
     def get_context_data(self,*args, **kwargs):
-        tracks = Track.objects.all()
+        tracks = Track.objects.all().order_by('-created_at')
         context = super(Tracks, self).get_context_data(*args, **kwargs)
         context["tracks"] = tracks
         return context
+
 
 class TrackDetail(DetailView):
     model=Track
@@ -44,7 +45,7 @@ class TrackDetail(DetailView):
         track =  Track.objects.get(id=self.kwargs['pk'])
         context = super(TrackDetail, self).get_context_data(*args, **kwargs)
         video = []
-        video.append(track.youtube_link.replace('https://youtube.com/watch?v=',''))
+        video.append(track.youtube_link.replace('https://www.youtube.com/watch?v=',''))
         views, likes = get_video_stats(video)
         views = standardizer(views)
         likes = standardizer(likes)
@@ -59,7 +60,7 @@ def ProfileDetail(request, name):
     track_list = tracks.all()
     videos = []
     for track in track_list:
-        videos.append(track.youtube_link.replace('https://youtube.com/watch?v=',''))
+        videos.append(track.youtube_link.replace('https://www.youtube.com/watch?v=',''))
     views, likes = get_video_stats(videos)
     views = standardizer(views)
     likes = standardizer(likes)

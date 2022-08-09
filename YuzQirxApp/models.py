@@ -56,7 +56,7 @@ class Profile(models.Model):
 class Album(models.Model):
     name=models.CharField(max_length=255, null=True, blank=True)
     author=models.CharField(max_length=255, null=True, blank=True)
-    created_at=models.DateTimeField()
+    created_at=models.DateField()
     executive_producer=models.CharField(max_length=255, null=True, blank=True)
     cover_designer=models.CharField(max_length=255, null=True, blank=True)
     cover=models.ImageField(null=True, blank=True, upload_to="music/covers")

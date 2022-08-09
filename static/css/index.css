@@ -3,8 +3,10 @@ body{
     margin:0px;
     padding:0px;
     font-family:sans-serif;
-  }
-
+    }
+audio, a{
+  cursor: url('https://www.simpleimageresizer.com/_uploads/photos/e3242f92/cursor_2_28x28.png'), auto!important;
+}
   /* CURSOR */
 .homecontainer{
   cursor:none;
@@ -24,7 +26,13 @@ body{
   pointer-events: none;
 }
 /* --------------- */
-
+.cursorlinkimg{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  z-index: 10000;
+  pointer-events: none;
+}
 
 .muzieknootjes {
   color: white;
@@ -311,7 +319,7 @@ a:hover,a:active{
   position: relative;
   width: 70;
   height: 70;
-  top: 25;
+  top: 20;
   object-fit: cover;
   left: 30px;
 }
@@ -527,5 +535,5 @@ footer {
   position: relative;
   top: 100%;
   border-top: 1px solid #ffffff;
-  cursor: none;
+  cursor: grab;
 }
