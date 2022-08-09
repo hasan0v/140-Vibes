@@ -35,6 +35,14 @@ class Tracks(ListView):
         context = super(Tracks, self).get_context_data(*args, **kwargs)
         context["tracks"] = tracks
         return context
+class Albums(ListView):
+    model=Album
+    template_name='albums.html'
+    def get_context_data(self,*args, **kwargs):
+        albums = Album.objects.all().order_by('-created_at')
+        context = super(Albums, self).get_context_data(*args, **kwargs)
+        context["albums"] = albums
+        return context
 
 
 class TrackDetail(DetailView):
@@ -50,6 +58,26 @@ class TrackDetail(DetailView):
         views = standardizer(views)
         likes = standardizer(likes)
         context["track"] = track
+        context["views"] = views
+        context["likes"] = likes
+        return context
+class AlbumDetail(DetailView):
+    model=Album
+    template_name='album.html'
+    
+    def get_context_data(self,*args, **kwargs):
+        album =  Album.objects.get(id=self.kwargs['pk'])
+        tracks =  Track.objects.filter(album=album)
+        track_list = tracks.all()
+        context = super(AlbumDetail, self).get_context_data(*args, **kwargs)
+        videos = []
+        for track in track_list:
+            videos.append(track.youtube_link.replace('https://www.youtube.com/watch?v=',''))
+        views, likes = get_video_stats(videos)
+        views = standardizer(views)
+        likes = standardizer(likes)
+        print("loho", views, likes)
+        context["tracks"] = tracks
         context["views"] = views
         context["likes"] = likes
         return context

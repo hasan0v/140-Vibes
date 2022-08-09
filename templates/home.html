@@ -20,12 +20,26 @@
             })
 
         });
+{% comment %} && win.width() >= 575 {% endcomment %}
+        var Winsize = function(){
+            var win = $(window);
+            if (win.width() <= 767 ) {
+                $('#bgVideo').css('width', '22rem')
+            }
+            else {
+                $('#bgVideo').css('width', '100%')
+            }
+        }
+        $(window).resize(Winsize);  
+        $(document).ready(Winsize); 
 </script>
 
 
 <div class="homecontainer">
-    <video id="bgVideo" preload="true" autoplay loop muted src="{% static '/video/bgvid.mp4' %}"> </video>
-    <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div  class="videocontainer">
+        <video id="bgVideo" preload="true" autoplay loop muted src="{% static '/video/bgvid.mp4' %}"> </video>
+    </div>
+        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h3 id="resizing-h3">
             <span id="slogan_area">
                     <div class="stage">

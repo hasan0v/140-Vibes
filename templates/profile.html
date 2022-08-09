@@ -1,7 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
-
 <script type="text/javascript">
    var Winsize = function(){
        var win = $(window);
@@ -247,10 +246,6 @@
          {% endif %}
       </div>
    </div>
-
-
-
-
    <div class="col-md-9" style="color:#ffffff">
       <div class="row gutters-sm proftrackcontainer">
       {% for track in tracks %}
@@ -278,50 +273,6 @@
           {% endfor %}
       </div>
    </div>
-
-
-
-
-   {% comment %} <div class="col-md-9">
-      {% for track in tracks %}
-      <div style="color:#ffffff">
-         <div class="card prof_tracks">
-            <a href="{% url 'track' track.pk %}">
-               <div class="row">
-                  <div class="col-2 col-x-2 col-sm-2 col-lg-1">
-                     {% if track.cover %}
-                     <img class="rounded-circle prof_cover_img" src="{{ track.cover.url }}" >
-                     {% else %}
-                     <img class="rounded-circle prof_cover_img" src="{% static 'images/disc.png' %}" ><br/>
-                     {% endif %}
-                  </div>
-                  <div class="col-8 col-sm-10 col-lg-11">
-                     <div class="card-body trackarea">
-                        <h5 class="card-title">{{track.name}}</h5>
-                        <audio controls controller id="player" src="{{track.demo.url}}">
-                        </audio>
-                     </div>
-                  </div>
-               </div>
-            </a>
-         </div>
-      </div>
-      {% endfor %}
-   </div> {% endcomment %}
-
-
-
-
-
-
-
-
-
-
-   {% comment %} 
-   <div class="row gutters-sm">
-   </div>
-   {% endcomment %}
 </div>
 {% endfor %}
 {% endblock content %}

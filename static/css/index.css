@@ -113,7 +113,18 @@ h6 {
   font-size: inherit;
 }
 #bgVideo {
-    -webkit-filter: blur(6px);
+  -webkit-filter: blur(6px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22rem;
+}
+.videocontainer{
+  position: absolute;
+  top: -10rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 #logo{
     width: 75px;
@@ -287,6 +298,7 @@ a:hover,a:active{
 .slogan {
     position: relative;
     margin-top: 4rem;
+    font-size: 3.5rem;
 }
 #slogan_area {
     width: 80%;
@@ -331,11 +343,13 @@ a:hover,a:active{
   object-fit: cover;
 
 }
-.authorname{
+.authorname, .albumname{
   font-family: 'Courier New', Courier, monospace;
   color: #ffffffab;
   font-size: 12px;
+  display: block;
 }
+
 .listplayer{
   width: 90%;
   height: 2rem;
@@ -536,4 +550,9 @@ footer {
   top: 100%;
   border-top: 1px solid #ffffff;
   cursor: grab;
+  margin-top: 10rem!important;
+}
+.albumgridcontainer{
+  position: relative;
+  left: 1rem;
 }

@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="row gutters-sm track_container">
+    {% comment %} <div class="col-8 col-md-3" style="color:#ffffff">
+    </div> {% endcomment %}
+    <div class="col-8 col-md-12" style="color:#ffffff">
+        <div class="row gutters-sm albumgridcontainer">
+            {% for album in albums %}
+            <div class="col-md-3">
+                {% if album.cover %}
+                <div class="card gridview" style="background-image: url({{ album.cover.url }}); background-size: contain; background-blend-mode: color; background-repeat: round;">
+                    <a href="{% url 'album' album.pk %}">
+                        <div class="row">
+                            <div class="col-12 gridcover">
+                                <img class="gridcover_img" src="{{ album.cover.url }}" >                                
+                            </div>
+                            <div class="col-12 gridbody">
+                                <div class="card-body">
+                                    <br/>
+                                    <h5 class="card-title">{{album.name}}</h5>
+                                    <h6 class="authorname">{{album.author}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </a> 
+                </div>
+                {% else %}
+                <div class="card gridview" style="background-image: url({% static 'images/disc.png' %}); background-size: contain; background-blend-mode: color; background-repeat: round;">
+                    <a href="{% url 'album' album.pk %}">
+                        <div class="row">
+                            <div class="col-12 gridcover">
+                                <img class="gridcover_img" src="{% static 'images/disc.png' %}" ><br/>
+                            </div>
+                            <div class="col-12 gridbody">
+                                <div class="card-body">
+                                    <br/>
+                                    <h5 class="card-title">{{album.name}}</h5>
+                                    <h6 class="authorname">{{album.author}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock%}
