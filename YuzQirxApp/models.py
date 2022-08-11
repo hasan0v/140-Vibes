@@ -1,11 +1,6 @@
-from email.mime import image
-from gettext import install
-import re
-from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
-from datetime import date, datetime
 # Create your models here.
 class Track(models.Model):
     name=models.CharField(max_length=255, null=False, blank=False)
@@ -68,3 +63,26 @@ class Album(models.Model):
     yandex_music_link=models.CharField(max_length=255, null=True, blank=True)
     def __str__(self):
         return self.name
+class Size(models.Model):
+    name=models.CharField(max_length=255, null=True, blank=True)
+    def __str__(self):
+        return self.name
+class Color(models.Model):
+    name=models.CharField(max_length=255, null=True, blank=True)
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    name=models.CharField(max_length=255, null=False, blank=False)
+    description=RichTextField(blank=True, null=True, max_length=10000)
+    price=models.FloatField(null=False, blank=False)
+    size=models.ForeignKey(Size, on_delete=models.CASCADE)
+    color=models.ForeignKey(Color, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+class ProductImage(models.Model):
+    name=models.CharField(max_length=255, null=True, blank=True)
+    product=models.ForeignKey(Product, on_delete=models.CASCADE)
+    image=models.ImageField(null=False, blank=False, upload_to="images/products")
+    def __str__(self):
+        return self.product.name

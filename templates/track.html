@@ -163,7 +163,10 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+        {% else%}
+        <div class="col-md-9">
+        </div>
+        {% endif %}
             {% if track.amazon_buy_link or track.itunes_buy_link or track.youtube_link%}
             <div class="col-md-3">
                 <div class="row">

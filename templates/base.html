@@ -66,7 +66,7 @@
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static 'logo/logo0.png' %}"/></a>
                 <button class="navbar-toggler navtoggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
+                    Menyu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="notes">
@@ -93,11 +93,8 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'albums' %}">Albomlar</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Treklər</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Mağaza</a></li>
-                        {% comment %} <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'albums' %}">Albomlar</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'team' %}">Komandamız</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'store' %}">Mağaza</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">Haqqımızda</a></li> {% endcomment %}
+                        
                     {% if user.is_superuser %}
                         <li class="nav-item"><a style="color:red;" class="nav-link px-lg-3 py-3 py-lg-4" href="admin">Admin</a></li>
                     {% endif %}
@@ -167,13 +164,13 @@
   
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Mağaza</a></h5>
+            <h5 class="text-uppercase"><a href="{% url 'store' %}">Mağaza</a></h5>
           </div>
           <!--Grid column-->
   
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Haqqımızda</a></h5>
+            <h5 class="text-uppercase"><a href="{% url 'about' %}">Haqqımızda</a></h5>
           </div>
           <!--Grid column-->
         </div>

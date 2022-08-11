@@ -96,28 +96,29 @@
                   {{prof.name}}
                </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card statbox mb-3">
+            {% if views or likes %}
+               <div class="row">
+                  <div class="col-12">
+                     <div class="card statbox mb-3">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-2">
-                                    <i style="height: 30;" class="fa-brands fa-youtube"></i>
-                                </div>
-                                <div class="col-4">
-                                     {{views}} <i class="fa-solid fa-eye"></i>
-                                </div>
-                                <div class="col-4">
-                                     {{likes}} <i class="fa-solid fa-heart"></i>
-                                </div>
-                                <div class="col-2">
-                                    
-                               </div>
-                            </div>
+                           <div class="row">
+                              <div class="col-2">
+                                 <i style="height: 30;" class="fa-brands fa-youtube"></i>
+                              </div>
+                              <div class="col-4">
+                                 {{views}} <i class="fa-solid fa-eye"></i>
+                              </div>
+                              <div class="col-4">
+                                 {{likes}} <i class="fa-solid fa-heart"></i>
+                              </div>
+                              <div class="col-2">
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                     </div>
+                  </div>
+               </div>
+            {% endif %}
          </div>
       </div>
    </div>

@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="productcontainer">
+    <div class="row text-white productrow">
+        <div class="col-md-6 productimages">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{imagefirst.image.url}}" class="d-block w-100" alt="{{image}}">
+                    </div>
+                    {% for image in images %}
+                    <div class="carousel-item">
+                        <img src="{{image.image.url}}" class="d-block w-100" alt="{{image}}">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if images %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="product">
+                <h1>{{product.name}}</h1>
+                <br/>
+                <br/>
+                <br/>
+                <div class="productprop">
+                    {% if product.description%}
+                        <h5>Haqqında : {{product.description}}</h5>
+                    {% endif%}
+                    {% if product.color != "Yoxdur" %}
+                        <h5>Rəng : {{product.color}}</h5>
+                    {% endif%}
+                    {% if product.size != "Yoxdur" %}
+                        <h5>Ölçü : {{product.size}}</h5>
+                    {% endif%}
+                    <h5>Qiymət : {{product.price|stringformat:".2f"}} AZN</h5>
+                </div>
+                <br/>
+                <br/>
+                <a href="https://wa.me/994553858220" target="_blank" class="btn btn-success order">Sifariş et</a>
+            </div>
+        </div>
+</div>
+{% endblock content %}
