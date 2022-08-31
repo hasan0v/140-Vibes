@@ -4,8 +4,12 @@ body{
     padding:0px;
     font-family:sans-serif;
     }
-audio, a{
-  cursor: url('https://www.simpleimageresizer.com/_uploads/photos/e3242f92/cursor_2_28x28.png'), auto!important;
+audio, a, button{
+  cursor: url('/static/icon/cursor.png'), auto!important;
+}
+.storeheader{
+  margin-top: 5rem;
+  border-bottom: 1px solid #fff;
 }
   /* CURSOR */
 .homecontainer{
@@ -24,6 +28,7 @@ audio, a{
   z-index: 10000;
   mix-blend-mode: difference;
   pointer-events: none;
+  display: none;
 }
 /* --------------- */
 .cursorlinkimg{
@@ -525,7 +530,7 @@ a {
 
 .navtoggler {
   position: relative;
-  left: 0rem;
+  left: 5rem;
 }
 nav#mainNav {
   cursor: none;
@@ -555,4 +560,95 @@ footer {
 .albumgridcontainer{
   position: relative;
   left: 1rem;
+}
+.productcard{
+  border-radius: 0;
+}
+.productcard:hover{
+  box-shadow: none;
+}
+.productname{
+  font-size: 1rem;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+figure{
+  overflow: hidden;
+}
+.productimage {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+  overflow: hidden;
+}
+.productimage:hover{
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+.productbuttons{
+  position: relative;
+  left: 2%;
+}
+.prodbutton{
+  border: none;
+  box-shadow: 2px 3px 3px #625656, -3px -2px 3px black;
+  margin-left: 10%;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.prodbutton:hover{
+  box-shadow: 2px 3px 3px black;
+}
+.cartsection{
+  position: fixed;
+  right: 2rem;
+  bottom: 3rem;
+  color: #ffffff;
+  z-index: 10000;
+}
+.cartbutton{
+  font-size: 2rem;
+}
+.cartarea{
+  display: none;
+}
+.cartarea:hover{
+  box-shadow: none;
+}
+.productcontainer{
+  position: relative;
+  top: 6.5rem;
+}
+.productimages{
+  position: relative;
+  width: 35rem;
+}
+.carousel-item {
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+.productrow{
+  --bs-gutter-x: 0;
+}
+.product{
+  position: relative;
+  left: 10%;
+  top: 2rem;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.productprop{
+  position: relative;
+}
+.order{
+  position: relative;
+  width: 80%;
 }

@@ -1,14 +1,5 @@
-def dictfetchall(cursor):
-    "Return all rows from a cursor as a dict"
-    columns = [col[0] for col in cursor.description]
-    return [
-        dict(zip(columns, row))
-        for row in cursor.fetchall()
-    ]
-from tkinter import N
 from googleapiclient.discovery import build
-import pandas as pd
-import seaborn as sns
+
 # channel_id = 'UC8rPRwO2e3pUFZHb6oz72gw'
 # video_id = '3na3khqRhqQ'
 
@@ -27,7 +18,7 @@ def get_video_stats(video_ids):
         statistics = items.get('statistics')
         views += int(statistics.get('viewCount'))
         likes += int(statistics.get('likeCount'))
-
+    # print("views", views, 'likes', likes)
     return views, likes
 
 def standardizer(num):
@@ -36,4 +27,6 @@ def standardizer(num):
         number = str(round(num /1000,2)) + 'K'
     elif num >= 1000000:
         number = str(round(num /1000000,2)) + 'M'
+    else:
+        number = num
     return number

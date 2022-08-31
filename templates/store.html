@@ -1,0 +1,95 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<script>
+    $(document).ready(function(){
+        $('.box').click(function(){
+            $('.cartarea').css('display', 'block');
+            $('.box').css('display', 'none');
+        })
+        $(document).mouseup(function(e) 
+{
+        var container = $(".cartarea");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0) 
+        {
+            $('.box').css('display', 'block');
+            container.hide();
+        }
+});
+    });
+</script>
+<!-- Header-->
+<header class="py-5 storeheader">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">140 Style</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Stilini ən dəli tərzə dəyiş</p>
+        </div>
+    </div>
+
+    {% comment %} <div class="cartsection">
+        <div class="box">
+            <i class="fa-solid fa-box-archive cartbutton"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                12
+            </span>
+        </div>
+        <div class="card cartarea" style="width: 18rem; height: auto;">
+            <div class="card-body">
+            <h5 class="card-title">Qutu</h5>
+            <p class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">məhsul</li>
+            </ul>
+            <div class="card-body">
+            <a href="#" class="card-link"></a>
+            <a href="#" class="card-link">Ödəniş</a>
+            </div>
+        </div>
+    </div> {% endcomment %}
+</header>
+<!-- Section-->
+<section class="py-5">
+
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in products %}
+            
+            <div class="col mb-5">
+                <div class="card h-100 productcard">
+                    <a href="{% url 'product' product.pk %}">
+                    <!-- Product image-->
+                        <figure>
+                            <img class="card-img-top productimage" src="{{ product.image }}" alt="{{ product.name }}" />
+                        </figure>
+                        <!-- Product details-->
+                    <div class="card-body p-3 justify-content-center">
+                        <div class="text-white">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder productname">{{ product.name }}</h5>
+                            <!-- Product price-->
+                            {{ product.price|stringformat:".2f" }} AZN
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center row productbuttons">
+                            <div class="col-12">
+                                <a href="https://wa.me/994553858220" target="_blank" class="btn btn-outline-light mt-auto prodbutton"><i class="fa-solid fa-money-bill"></i></a>
+                            </div>
+                            {% comment %} <div class="col-6">
+                                <a class="btn btn-outline-light mt-auto prodbutton" href="#"><i class="fa-solid fa-box-archive"></i></a>
+                        
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
