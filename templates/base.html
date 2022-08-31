@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -21,13 +20,7 @@
         <link href="{% static  'css/index.css'%}" rel="stylesheet" />
         <script src="{% static 'js/index.js'%}"></script>
 
-        {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js" integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        {% endcomment %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 
@@ -45,7 +38,7 @@
           $(document).ready(function(){
               const cursor = document.querySelector('.cursorlink img');
               document.addEventListener('mousemove', e => {
-                  cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+                $(".cursor img").attr("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
               })
   
               document.addEventListener('click', () => {
@@ -55,141 +48,11 @@
                       cursor.classList.remove("expand");
                   }, 500)
               })
-
-  
           });
-  </script>
+        </script>
     </head>
     <body>
-
-        <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static 'logo/logo0.png' %}"/></a>
-                <button class="navbar-toggler navtoggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="notes">
-                    <div class="muzieknootjes">
-                        <div class="noot-1">
-                            &#9835; &#9833;
-                        </div>
-                        <div class="noot-2">
-                            &#9833;
-                        </div>
-                        <div class="noot-3">
-                            &#9839; &#9834;
-                        </div>
-                        <div class="noot-4">
-                            &#9834;
-                        </div>
-                        <div class="noot-5">
-                            &#9835; &#9833;
-                        </div>
-                    </div>
-                      
-                </div>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'albums' %}">Albomlar</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Treklər</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Mağaza</a></li>
-                        {% comment %} <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'albums' %}">Albomlar</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'team' %}">Komandamız</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'store' %}">Mağaza</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">Haqqımızda</a></li> {% endcomment %}
-                    {% if user.is_superuser %}
-                        <li class="nav-item"><a style="color:red;" class="nav-link px-lg-3 py-3 py-lg-4" href="admin">Admin</a></li>
-                    {% endif %}
-        
-                    </ul>
-                </div>
-            </div>
-        </nav>
         {% block content %}
-        
         {% endblock content %}
-       
-<!-- Footer -->
-<footer class="text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4">
-      <!-- Section: Social media -->
-      <section class="mb-4">
-        <!-- Youtube -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://youtube.com/channel/UC8rPRwO2e3pUFZHb6oz72gw" role="button">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/140vibes/" role="button">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/140vibes/" role="button">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-  
-        <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/140vibes" role="button">
-          <i class="fab fa-twitter"></i>
-        </a>
-  
-        <!-- Gmail -->
-        <a class="btn btn-outline-light btn-floating m-1" href="mailto:140vibes@gmail.com" role="button">
-            <i class="fa-regular fa-envelope"></i>
-        </a>
-  
-
-
-      </section>
-      <!-- Section: Social media -->
-  
-      <!-- Section: Text -->
-  
-      <!-- Section: Links -->
-      <section class="">
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase"><a href="{% url 'albums' %}">Albomlar</a></h5>
-            {% comment %} Albomlar {% endcomment %}
-          </div>
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Treklər</a></h5>
-  
-            
-          </div>
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Mağaza</a></h5>
-          </div>
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Haqqımızda</a></h5>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </section>
-      <!-- Section: Links -->
-    </div>
-    <!-- Grid container -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2022 Copyright:
-      <a class="text-white" href="https://instagram.com/_ali.h.m_">Alien</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
     </body>
 </html>

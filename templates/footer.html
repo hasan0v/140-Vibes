@@ -1,0 +1,80 @@
+{% load static %}
+<footer class="text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Youtube -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://youtube.com/channel/UC8rPRwO2e3pUFZHb6oz72gw" role="button">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/140vibes/" role="button">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/140vibes/" role="button">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/140vibes" role="button">
+          <i class="fab fa-twitter"></i>
+        </a>
+  
+        <!-- Gmail -->
+        <a class="btn btn-outline-light btn-floating m-1" href="mailto:140vibes@gmail.com" role="button">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+  
+
+
+      </section>
+      <!-- Section: Social media -->
+  
+      <!-- Section: Text -->
+  
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase"><a href="{% url 'albums' %}">Albomlar</a></h5>
+            {% comment %} Albomlar {% endcomment %}
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Treklər</a></h5>
+  
+            
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Mağaza</a></h5>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase"><a href="{% url 'tracks' %}">Haqqımızda</a></h5>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="https://instagram.com/_ali.h.m_">Alien</a>
+    </div>
+    <!-- Copyright -->
+</footer>
