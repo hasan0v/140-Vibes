@@ -8,9 +8,19 @@ from .tools import get_video_stats, standardizer
 
 
 class Home(ListView):
-    model=Album
+    model=Profile
     template_name='home.html'
-
+    def get_context_data(self,*args, **kwargs):
+        artists = Profile.objects.all()
+        artists_ids = Profile.objects.values_list('id', flat=True)
+        ids = []
+        for i in artists_ids:
+            ids.append(i)
+        print(ids)
+        context = super(Home, self).get_context_data(*args, **kwargs)
+        context["artists"] = artists
+        context["ids"] = ids
+        return context
 class Tracks(ListView):
     model=Track
     template_name='tracks.html'
@@ -97,7 +107,7 @@ class ProductDetail(DetailView):
         context["images"] = images
         return context
 def ProfileDetail(request, name):
-    profile =  Profile.objects.filter(name=name)
+    profile =  Profile.objects.filter(name=name).first()
     tracks =  Track.objects.filter(author=name)
     track_list = tracks.all()
     videos = []

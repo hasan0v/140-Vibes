@@ -1,52 +1,19 @@
-<div class="cursor"></div>
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
 {% include 'navbar.html' %}
-<div  class="home">
-<link rel="icon" type="image/icon" href="static/logo.png" />
-<script type="text/javascript">
-        $(document).ready(function(){
-            const cursor = document.querySelector('.cursor');
-            document.addEventListener('mousemove', e => {
-<<<<<<< HEAD
-                $(".cursor").attr("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;");
-=======
-                cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px; display: block;");
-            
->>>>>>> master
-            })
+<script src="{% static 'js/home.js'%}"></script>
+<link href="{% static  'css/home.css'%}" rel="stylesheet"/>
 
-            document.addEventListener('click', () => {
-                cursor.classList.add("expand");
-
-                setTimeout(() => {
-                    cursor.classList.remove("expand");
-                }, 500)
-            })
-
-        });
-</script>
-
-<link href="{% static  'css/home.css'%}" rel="stylesheet" />
-
-<div class="homecontainer">
-        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h3 id="resizing-h3">
-            <span id="slogan_area">
-                    <div class="stage">
-                        <div class="cubespinner">
-                            <div class="face1">140</div>
-                            <div class="face2">Vibes</div>
-                            <div class="face3">140</div>
-                            <div class="face4">Vibes</div>
-                        </div>
-                    </div>
-                    <div class="slogan">Record label based in Baku, Azerbaijan</div>
-            </span>
-        </h3>
-    </div>
-
+<div class="cont">
+	<div class="slider"></div>
+	<ul class="navslide"></ul>
+	<div data-target='right' class="side-nav side-nav--right"></div>
+	<div data-target='left' class="side-nav side-nav--left"></div>
 </div>
-</div>
-{% endblock%}
+{% for artist in artists%}
+    <p id="artist_{{artist.id}}" hidden>{{artist}}</p>
+    <p id="artist_img_{{artist.id}}" hidden>{{artist.profile_pic}}</p>
+{% endfor %}
+    <p id="artists_ids" hidden>{{ids}}</p>
+{% endblock content %}

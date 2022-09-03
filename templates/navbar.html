@@ -1,52 +1,57 @@
 {% load static %}
 <link href="{% static  'css/navbar.css'%}" rel="stylesheet" />
+<script src="{% static 'js/navbar.js'%}"></script>
+
 <script>
     $( document ).ready(function() {
-
-        $( ".cross" ).hide();
         $( ".menu" ).hide();
-        $( ".hamburger" ).click(function() {
-        $( ".menu" ).slideToggle( "slow", function() {
-        $( ".hamburger" ).hide();
-        $( ".cross" ).show();
-        });
-        });
-        
-        $( ".cross" ).click(function() {
-        $( ".menu" ).slideToggle( "slow", function() {
-        $( ".cross" ).hide();
-        $( ".hamburger" ).show();
-        });
-        });
-        
+        $(".hamburger").click(function(){
+            $(this).toggleClass("is-active");
+            if ($( ".menu" ).hasClass( "expanded" )){
+                    $( "#logo" ).show()
+                    $( ".menu" ).removeClass( "expanded" );
+                }
+                else{
+                    $( "#logo" ).hide()
+                    $( ".menu" ).addClass( "expanded" );
+
+                }
+            $( ".menu" ).slideToggle( "slow", function() {})
+          });
         });
 </script>
-{% comment %} <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static 'logo/logo0.png' %}"/></a>
-        <button class="navbar-toggler navtoggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menyu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                
-            </ul>
+<header>
+    <div class="row">
+        <div class="col">
+            <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static 'logo/logo.png' %}"/></a>
+        </div>
+        <div  class="col" style="display: flex; justify-content: end;">
+            <a>
+                <div class="containerburger">
+                    <div class="row cf">
+                        <div class="three col">
+                            <div class="hamburger" id="hamburger-6">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
-</nav> {% endcomment %}
-<header>
-    <button class="hamburger">&#9776;</button>
-    <button class="cross">&#735;</button>
-  </header>
+            
+</header>
   
-  <div class="menu">
+  <div class="menu" style="display:none;">
     <ul>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'albums' %}">Albomlar</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Treklər</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Mağaza</a></li>
+        <li class="nav-item highlight"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'home' %}">Artistlər</a></li>
+        <li class="nav-item highlight"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tracks' %}">Layihələr</a></li>
+        <li class="nav-item highlight"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'store' %}">Mağaza</a></li>
+        <li class="nav-item highlight"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">Haqqımızda</a></li>
     {% if user.is_superuser %}
-        <li class="nav-item"><a style="color:red;" class="nav-link px-lg-3 py-3 py-lg-4" href="admin">Admin</a></li>
+        <li class="nav-item highlight"><a style="color:red;" class="nav-link px-lg-3 py-3 py-lg-4" href="admin">Admin</a></li>
     {% endif %}
     </ul>
   </div> 
