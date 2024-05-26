@@ -20,8 +20,8 @@ Welcome to the 140 Vibes! This project is designed to showcase and manage the mu
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/hasan0v/140-vibes-hiphop.git
-   cd 140-vibes-hiphop
+   git clone https://github.com/hasan0v/140-vibes.git
+   cd 140-vibes
    ```
 
 2. **Set Up a Virtual Environment:**
