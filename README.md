@@ -1,8 +1,8 @@
-# 140 Vibes Hiphop Group Project
+# 140 Vibes 
 
 ## Overview
 
-Welcome to the 140 Vibes Hiphop Group Project! This project is designed to showcase and manage the music, albums, profiles, and products of the 140 Vibes hiphop group. It features various functionalities including viewing tracks, albums, products, and profiles, along with detailed statistics for YouTube video views and likes.
+Welcome to the 140 Vibes! This project is designed to showcase and manage the music, albums, profiles, and products of the 140 Vibes hiphop group. It features various functionalities including viewing tracks, albums, products, and profiles, along with detailed statistics for YouTube video views and likes.
 
 ## Features
 
@@ -69,26 +69,12 @@ Welcome to the 140 Vibes Hiphop Group Project! This project is designed to showc
 
 2. **Clone Your Fork:**
    ```bash
-   git clone https://github.com/<your-username>/140-vibes-hiphop.git
-   cd 140-vibes-hiphop
+   git clone https://github.com/hasan0v/140-vibes.git
+   cd 140-vibes
    ```
 
-3. **Create a Branch:**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
 
-4. **Make Changes:**
-   Implement your feature or bug fix.
-
-5. **Commit and Push:**
-   ```bash
-   git add .
-   git commit -m "Add your commit message"
-   git push origin feature/your-feature-name
-   ```
-
-6. **Create a Pull Request:**
+3. **Create a Pull Request:**
    Open your fork on GitHub and click on "New Pull Request".
 
 ## License
@@ -97,8 +83,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or inquiries, please contact Hasan at hasan@example.com.
+For any questions or inquiries, please contact me at alihasanov.m@gmail.com.
 
 ---
 
-Thank you for contributing to the 140 Vibes Hiphop Group Project! We appreciate your support and effort in making this project better.
+Thank you for contributing to the 140 Vibes! We appreciate your support and effort in making this project better.
